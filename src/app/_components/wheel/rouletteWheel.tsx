@@ -41,40 +41,34 @@ const WheelRouletteApp: React.FunctionComponent = () => {
     };
 
     return (
-        <>
-            <div>
-
-            </div>
-            <div>
-                <Wheel
-                    mustStartSpinning={mustSpin}
-                    prizeNumber={prizeNumber}
-                    data={data}
-                    outerBorderColor={"#a8cdf362"}
-                    outerBorderWidth={7}
-                    radiusLineColor={"black"}
-                    radiusLineWidth={2}
-                    fontSize={16}
-                    spinDuration={0.8}  // Set spin duration to 1 second (faster spin)
-                    onStopSpinning={() => {
-                        setMustSpin(false);
-                        setWinner(data[prizeNumber].option);
-                        alert(`You won: ${data[prizeNumber].option}`);
-                    }}
-                />
-            </div>
-            <button
-                onClick={handleSpinClick}
-                className="mt-5 bg-blue-500 text-white py-2 px-4 rounded"
-            >
-                Spin the Wheel
-            </button>
-            {winner != "" && (
-                <div className="mt-5 text-xl">
-                    Selected: <strong>{winner}</strong>
+        <div className='w-max'>
+            <div className='flex flex-col justify-center'>
+                <div>
+                    <Wheel
+                        mustStartSpinning={mustSpin}
+                        prizeNumber={prizeNumber}
+                        data={data}
+                        outerBorderColor={"#a8cdf362"}
+                        outerBorderWidth={7}
+                        radiusLineColor={"black"}
+                        radiusLineWidth={2}
+                        fontSize={16}
+                        spinDuration={0.4}  // Set spin duration to 1 second (faster spin)
+                        onStopSpinning={() => {
+                            setMustSpin(false);
+                            setWinner(data[prizeNumber].option);
+                            alert(`You won: ${data[prizeNumber].option}`);
+                        }}
+                    />
                 </div>
-            )}
-        </>
+                <button
+                    onClick={handleSpinClick}
+                    className="mt-5 bg-blue-500 text-white py-2 px-4 rounded w-max self-center"
+                >
+                    Spin
+                </button>
+            </div >
+        </div>
     )
 }
 
