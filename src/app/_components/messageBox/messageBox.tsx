@@ -1,18 +1,16 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
 
 type MessageBoxType = {
-    setSegmentTexts?: () => void
+    textLines: string
+    setTextLines: Dispatch<SetStateAction<string>>
 }
 
-const MessageBox: React.FunctionComponent<MessageBoxType> = ({ setSegmentTexts }) => {
-
-    const [textLines, setTextLines] = useState<string>("");
+const MessageBox: React.FunctionComponent<MessageBoxType> = ({ textLines, setTextLines }) => {
 
 
     const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         e.preventDefault();
         // Handle form submission here
-        console.log(e.target.value);
         setTextLines(e.target.value);
     };
 

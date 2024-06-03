@@ -5,8 +5,13 @@ import { MessageBox } from "./_components/messageBox";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  // Full screen
   const [isFullScreen, setIsFullScreen] = useState(false);
 
+  // Text input
+  const [textLines, setTextLines] = useState<string>("Prize 1\nPrize 2\nPrize 3\nPrize 4");
+
+  // Remove listner upon component unmount
   useEffect(() => {
     document.addEventListener('keydown', handleKeyPress);
     return () => {
@@ -61,12 +66,12 @@ export default function Home() {
             </button>
 
             {/* Wheel */}
-            <RouletteWheelApp />
+            <RouletteWheelApp textLines={textLines} />
           </div>
 
           {/* Message box */}
           <div className="mt-7">
-            <MessageBox />
+            <MessageBox textLines={textLines} setTextLines={setTextLines} />
           </div>
         </div>
       </main>
